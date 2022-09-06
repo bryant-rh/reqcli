@@ -48,7 +48,7 @@ func NewCmd() *cobra.Command {
 			//校验参数
 			err := Validate(cmd, args)
 			if err != nil {
-				klog.Fatal(err)
+				klog.Fatal(pkg.RedColor(err))
 			}
 
 			headerMap = make(map[string]string)
@@ -85,15 +85,15 @@ func NewCmd() *cobra.Command {
 					Delete(urlStr)
 			}
 
-			if err != nil {
-				klog.Fatal(err)
-			}
-
 			trace := resp.TraceInfo() // Use `resp.Request.TraceInfo()` to avoid unnecessary struct copy in production.
 
-			fmt.Println("\n" + pkg.GreenColor(trace.Blame())) // Print out exactly where the http request is slowing down.
+			fmt.Println("\n" + pkg.YellowColor(trace.Blame())) // Print out exactly where the http request is slowing down.
 			fmt.Println(pkg.RedColor("-------------------------------"))
-			fmt.Println(trace)
+			fmt.Println(pkg.GreenColor(trace))
+
+			if err != nil {
+				klog.Fatal(pkg.RedColor(err))
+			}
 
 		},
 	}

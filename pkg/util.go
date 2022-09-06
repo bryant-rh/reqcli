@@ -29,14 +29,14 @@ func JsonToMap(str string) map[string]interface{} {
 	return tempMap
 }
 
-func RedColor(s string) string {
+func RedColor(s interface{}) string {
 	return fmt.Sprintf("%s", aurora.Red(s))
 }
 
-func YellowColor(s string) string {
+func YellowColor(s interface{}) string {
 	return fmt.Sprintf("%s", aurora.Yellow(s))
 }
 
-func GreenColor(s string) string {
+func GreenColor(s interface{}) string {
 	return fmt.Sprintf("%s", aurora.Green(s))
 }
