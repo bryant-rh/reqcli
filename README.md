@@ -66,7 +66,7 @@ RemoteAddr        : 52.87.105.151:443
 
 ## POST
 ```Bash
-go run main.go "https://httpbin.org/post" \
+reqcli "https://httpbin.org/post" \
 -X POST  \
 -H 'Content-Type: application/json' \
 -d '{"username": "imroc"}'
